@@ -43,12 +43,28 @@
     
     // Places refresher at correct location
     [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:false forKey:@"dark_mode_on"];
+    [defaults synchronize];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     
     // Reloads page when reopened
     [self fetchMovies];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    bool darkModeStatus = [defaults boolForKey:@"dark_mode_on"];
+    
+    if (darkModeStatus) {
+        self.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
+    }
+    else {
+        self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+    }
 }
 
 - (void)fetchMovies {
@@ -85,17 +101,21 @@
                    // Reload table view
                    [self.tableView reloadData];
                }
-            
-        // Stopping progress bar
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-        });
+        
+        [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(stopAnimation) userInfo:nil repeats:NO];
             
         // Stop refreshing animation
         [self.refreshControl endRefreshing];
         }];
         
         [task resume];
+    });
+}
+
+-(void)stopAnimation {
+    // Stopping progress bar
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     });
 }
 

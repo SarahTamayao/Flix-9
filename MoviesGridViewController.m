@@ -47,6 +47,18 @@
     [self fetchMovies];
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    bool darkModeStatus = [defaults boolForKey:@"dark_mode_on"];
+    
+    if (darkModeStatus) {
+        self.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
+    }
+    else {
+        self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+    }
+}
+
 - (void)fetchMovies {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
@@ -77,11 +89,16 @@
                    [self.collectionView reloadData];
                }
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-        });
+            [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(stopAnimation) userInfo:nil repeats:NO];
+        
         }];
         [task resume];
+    });
+}
+
+-(void)stopAnimation {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     });
 }
 

@@ -28,6 +28,18 @@
     [self fetchTrailer];
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    bool darkModeStatus = [defaults boolForKey:@"dark_mode_on"];
+    
+    if (darkModeStatus) {
+        self.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
+    }
+    else {
+        self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+    }
+}
+
 - (void)fetchTrailer {
     // Getting movie ID and API url
     NSString *movieID = self.movie[@"id"];
@@ -86,11 +98,15 @@
                        [self presentViewController:alert animated:YES completion:nil];
                    }
                }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
-            });
+            [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(stopAnimation) userInfo:nil repeats:NO];
         }];
         [task resume];
+    });
+}
+
+-(void)stopAnimation {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     });
 }
 

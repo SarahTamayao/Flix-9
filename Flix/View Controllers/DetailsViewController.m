@@ -56,6 +56,20 @@
     
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    bool darkModeStatus = [defaults boolForKey:@"dark_mode_on"];
+    
+    if (darkModeStatus) {
+        self.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
+    }
+    else {
+        self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+    }
+}
 
 #pragma mark - Navigation
 
@@ -64,6 +78,9 @@
     // Send movie info to trailer view
     TrailerViewController *trailerViewController = [segue destinationViewController];
     trailerViewController.movie = self.movie;
+    
+    FullPosterViewController *fullPosterViewController = [segue destinationViewController];
+    fullPosterViewController.movie = self.movie;
 }
 
 

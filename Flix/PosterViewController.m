@@ -59,14 +59,27 @@
     [self.posterView addGestureRecognizer:self.tapRecognizer];
 }
 
-/*
+-(void)viewDidAppear:(BOOL)animated {
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    bool darkModeStatus = [defaults boolForKey:@"dark_mode_on"];
+    
+    if (darkModeStatus) {
+        self.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
+    }
+    else {
+        self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+    }
+}
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    FullPosterViewController *fullPosterViewController = [segue destinationViewController];
+    fullPosterViewController.movie = self.movie;
 }
-*/
+
 
 @end
