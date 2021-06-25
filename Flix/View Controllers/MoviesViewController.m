@@ -76,8 +76,10 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:self.view animated:YES];
         });
+            
         [self.refreshControl endRefreshing];
         }];
+        
         [task resume];
     });
 }

@@ -83,6 +83,35 @@
             </objects>
             <point key="canvasLocation" x="28" y="811"/>
         </scene>
+        <!--Trailer View Controller-->
+        <scene sceneID="bu1-ON-DLq">
+            <objects>
+                <viewController id="RTy-bk-ebl" customClass="TrailerViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ax0-gw-ywW" customClass="Trail">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CR3-kf-27k">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Vs-Dw-BIr"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="trailerView" destination="CR3-kf-27k" id="1GB-6f-gxF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E6o-ZV-Qy5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-929.23076923076917" y="1503.5545023696682"/>
+        </scene>
         <!--Details View Controller-->
         <scene sceneID="HpA-wL-S8p">
             <objects>
@@ -98,6 +127,10 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zVz-0M-AMY">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="204"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="VKX-nv-4SX" appends="YES" id="ajM-Su-GHD"/>
+                                        </connections>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="niJ-fo-1hj">
                                         <rect key="frame" x="17" y="140" width="110" height="141"/>
@@ -136,10 +169,17 @@
                         <outlet property="backdropView" destination="zVz-0M-AMY" id="TsG-y3-7jN"/>
                         <outlet property="posterView" destination="niJ-fo-1hj" id="gVa-Xj-90L"/>
                         <outlet property="synopsisLabel" destination="U38-lu-q24" id="2MO-NG-3Gk"/>
+                        <outlet property="tapRecognizer" destination="VKX-nv-4SX" id="K9X-7e-VXu"/>
                         <outlet property="titleLabel" destination="Yiz-mW-yRT" id="xk0-2x-8iy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZXK-oc-Rd3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="VKX-nv-4SX">
+                    <connections>
+                        <action selector="onTap:" destination="CXY-Uc-fYS" id="vkO-WI-6vd"/>
+                        <segue destination="RTy-bk-ebl" kind="presentation" id="qNo-7p-Cz9"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="27.69230769230769" y="1503.5545023696682"/>
         </scene>
