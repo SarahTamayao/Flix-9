@@ -44,9 +44,13 @@
     // Places refresher at correct location
     [self.tableView insertSubview:self.refreshControl atIndex:0];
     
+    // Setting initial theme to light mode
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:false forKey:@"dark_mode_on"];
     [defaults synchronize];
+    
+    // Search bar placeholder text
+    self.searchBar.placeholder = @"Search by movie title...";
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -56,9 +60,17 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    // Loads in user-picked color and dark mode settings
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     bool darkModeStatus = [defaults boolForKey:@"dark_mode_on"];
+    int navColor = [defaults integerForKey:@"nav_color"];
     
+    // Set bar color
+    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    navigationBar.barTintColor = [self colorWithHex:navColor];
+    self.tabBarController.tabBar.barTintColor = [self colorWithHex:navColor];
+    
+    // Set dark mode or light mode
     if (darkModeStatus) {
         self.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
     }
@@ -173,6 +185,15 @@
     self.searchBar.showsCancelButton = NO;
     self.searchBar.text = @"";
     [self.searchBar resignFirstResponder];
+}
+
+// Generates a UIColor from hex color code
+-(UIColor *)colorWithHex:(UInt32)col {
+    unsigned char r, g, b;
+    b = col & 0xFF;
+    g = (col >> 8) & 0xFF;
+    r = (col >> 16) & 0xFF;
+    return [UIColor colorWithRed:(float)r/255.0f green:(float)g/255.0f blue:(float)b/255.0f alpha:1];
 }
 
 

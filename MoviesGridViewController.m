@@ -15,6 +15,7 @@
 @interface MoviesGridViewController () <UICollectionViewDataSource, UICollisionBehaviorDelegate>
 @property (nonatomic, strong) NSArray *movies;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -39,6 +40,13 @@
     CGFloat itemWidth = (self.collectionView.frame.size.width-layout.minimumInteritemSpacing * (postersPerLine - 1))/postersPerLine;
     CGFloat itemHeight = itemWidth * 1.5;
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
+    
+    // Refresh Control
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
+    
+    // Places refresher at correct location
+    [self.collectionView insertSubview:self.refreshControl atIndex:0];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -48,9 +56,17 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    // Loads in user-picked color and dark mode settings
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     bool darkModeStatus = [defaults boolForKey:@"dark_mode_on"];
+    int navColor = [defaults integerForKey:@"nav_color"];
     
+    // Set bar color
+    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    navigationBar.barTintColor = [self colorWithHex:navColor];
+    self.tabBarController.tabBar.barTintColor = [self colorWithHex:navColor];
+    
+    // Set dark mode or light mode
     if (darkModeStatus) {
         self.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
     }
@@ -90,6 +106,9 @@
                }
         
             [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(stopAnimation) userInfo:nil repeats:NO];
+            
+            // Stop refreshing animation
+            [self.refreshControl endRefreshing];
         
         }];
         [task resume];
@@ -122,6 +141,14 @@
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.movies.count;
+}
+
+-(UIColor *)colorWithHex:(UInt32)col {
+    unsigned char r, g, b;
+    b = col & 0xFF;
+    g = (col >> 8) & 0xFF;
+    r = (col >> 16) & 0xFF;
+    return [UIColor colorWithRed:(float)r/255.0f green:(float)g/255.0f blue:(float)b/255.0f alpha:1];
 }
 
 

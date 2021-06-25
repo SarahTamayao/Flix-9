@@ -22,15 +22,17 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    NSLog(@"changing...");
+    // Loads in user-picked color and dark mode settings
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     bool darkModeStatus = [defaults boolForKey:@"dark_mode_on"];
     int navColor = [defaults integerForKey:@"nav_color"];
     
+    // Set bar color
     UINavigationBar *navigationBar = self.navigationController.navigationBar;
-    NSLog(@"%@", [self colorWithHex:navColor]);
-    navigationBar.tintColor = [UIColor colorWithRed:1.0 green:0.25 blue:0.25 alpha:0.8];
+    navigationBar.barTintColor = [self colorWithHex:navColor];
+    self.tabBarController.tabBar.barTintColor = [self colorWithHex:navColor];
     
+    // Set dark mode or light mode
     if (darkModeStatus) {
         self.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
     }
@@ -73,7 +75,7 @@
 
 - (IBAction)setColor1:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:0x273598 forKey:@"nav_color"];
+    [defaults setInteger:0x273599 forKey:@"nav_color"];
     [defaults synchronize];
     
     [self viewWillAppear:true];
@@ -81,7 +83,7 @@
 
 - (IBAction)setColor2:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:0xFFC081 forKey:@"nav_color"];
+    [defaults setInteger:0xFFE07A forKey:@"nav_color"];
     [defaults synchronize];
     
     [self viewWillAppear:true];
@@ -89,7 +91,7 @@
 
 - (IBAction)setColor3:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:0x6BE495 forKey:@"nav_color"];
+    [defaults setInteger:0xBBEA93 forKey:@"nav_color"];
     [defaults synchronize];
     
     [self viewWillAppear:true];
@@ -97,7 +99,7 @@
 
 - (IBAction)setColor4:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:0xE23188 forKey:@"nav_color"];
+    [defaults setInteger:0xFFE0E5 forKey:@"nav_color"];
     [defaults synchronize];
     
     [self viewWillAppear:true];
