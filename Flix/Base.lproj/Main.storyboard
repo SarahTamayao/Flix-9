@@ -135,9 +135,13 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="niJ-fo-1hj">
                                         <rect key="frame" x="17" y="140" width="110" height="141"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="stJ-CC-bjR" appends="YES" id="f3I-t8-n44"/>
+                                        </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U38-lu-q24">
-                                        <rect key="frame" x="17" y="310" width="357" height="382"/>
+                                        <rect key="frame" x="17" y="346" width="357" height="346"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Label">
@@ -156,6 +160,18 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hcC-Mo-TMk">
+                                        <rect key="frame" x="17" y="297" width="169" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.10980392160000001" green="0.30588235289999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="WATCH TRAILER">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="RTy-bk-ebl" kind="presentation" id="zag-Ee-i0T"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <viewLayoutGuide key="contentLayoutGuide" id="2CZ-bX-C64"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="9pn-g9-dyE"/>
@@ -170,6 +186,7 @@
                         <outlet property="posterView" destination="niJ-fo-1hj" id="gVa-Xj-90L"/>
                         <outlet property="synopsisLabel" destination="U38-lu-q24" id="2MO-NG-3Gk"/>
                         <outlet property="tapRecognizer" destination="VKX-nv-4SX" id="K9X-7e-VXu"/>
+                        <outlet property="tapRecognizer2" destination="stJ-CC-bjR" id="gza-ms-0JA"/>
                         <outlet property="titleLabel" destination="Yiz-mW-yRT" id="xk0-2x-8iy"/>
                     </connections>
                 </viewController>
@@ -180,8 +197,29 @@
                         <segue destination="RTy-bk-ebl" kind="presentation" id="qNo-7p-Cz9"/>
                     </connections>
                 </tapGestureRecognizer>
+                <tapGestureRecognizer id="stJ-CC-bjR">
+                    <connections>
+                        <segue destination="Pvs-3T-O1E" kind="show" id="4hX-Ic-ok3"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="27.69230769230769" y="1503.5545023696682"/>
+        </scene>
+        <!--Full Poster View Controller-->
+        <scene sceneID="YDN-xN-SK0">
+            <objects>
+                <viewController id="Pvs-3T-O1E" customClass="FullPosterViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6oT-e3-T4Z">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="F2A-YJ-jcv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="a7I-wj-EpQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JhE-al-SdG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="941" y="2235"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ixZ-7s-gOq">
@@ -316,6 +354,10 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dzT-8h-4ea">
                                         <rect key="frame" x="14" y="152" width="110" height="174"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Iye-rv-yCq" appends="YES" id="Yxm-tM-nDK"/>
+                                        </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nc9-L2-SXv">
                                         <rect key="frame" x="132" y="277" width="250" height="23"/>
@@ -359,14 +401,24 @@
                         <outlet property="infoLabel2" destination="p9K-xQ-ng7" id="0gh-JE-4BR"/>
                         <outlet property="posterView" destination="dzT-8h-4ea" id="4Dy-KM-BIC"/>
                         <outlet property="synopsisLabel" destination="q99-t4-qFS" id="ZEa-ze-xFq"/>
+                        <outlet property="tapRecognizer" destination="Iye-rv-yCq" id="xkx-8n-AND"/>
                         <outlet property="titleLabel" destination="jw7-VO-i9i" id="Liw-QD-Fdp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gpU-N0-hmu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Iye-rv-yCq">
+                    <connections>
+                        <segue destination="Pvs-3T-O1E" kind="show" id="tKL-7C-cdR"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1867.6923076923076" y="1503.5545023696682"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="tKL-7C-cdR"/>
+        <segue reference="zag-Ee-i0T"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="now_playing_tabbar_item" width="21" height="21"/>
         <image name="reel_tabbar_icon" width="25" height="25"/>

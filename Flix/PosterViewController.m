@@ -7,6 +7,7 @@
 
 #import "PosterViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "FullPosterViewController.h"
 
 @interface PosterViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *backdropView;
@@ -15,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *synopsisLabel;
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel2;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapRecognizer;
 
 @end
 
@@ -52,6 +54,9 @@
     self.infoLabel2.text = releaseDateString;
     // [self.titleLabel sizeToFit];
     [self.synopsisLabel sizeToFit];
+    
+    [self.posterView setUserInteractionEnabled:true];
+    [self.posterView addGestureRecognizer:self.tapRecognizer];
 }
 
 /*

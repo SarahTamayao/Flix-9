@@ -8,6 +8,7 @@
 #import "DetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "TrailerViewController.h"
+#import "FullPosterViewController.h"
 
 @interface DetailsViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *backdropView;
@@ -15,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *synopsisLabel;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapRecognizer;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapRecognizer2;
 
 
 
@@ -25,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // Set navigation title to the current movie
     self.navigationItem.title = self.movie[@"title"];
     
     // Poster image
@@ -48,14 +51,17 @@
     // Allow background image to be tappable
     [self.backdropView setUserInteractionEnabled:true];
     [self.backdropView addGestureRecognizer:self.tapRecognizer];
+    [self.posterView setUserInteractionEnabled:true];
+    [self.posterView addGestureRecognizer:self.tapRecognizer2];
     
 }
 
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    // Send movie info to trailer view
     TrailerViewController *trailerViewController = [segue destinationViewController];
     trailerViewController.movie = self.movie;
 }
