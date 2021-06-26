@@ -28,6 +28,8 @@
     NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
     NSURLRequest *request = [NSURLRequest requestWithURL:posterURL];
     
+    // Attempted fade-in but could not figure out how to effectively clear my cache, so I could not check whether it worked
+    /*
     [self.posterView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *imageRequest, NSHTTPURLResponse *imageResponse, UIImage *image) {
                                         
         // imageResponse will be nil if the image is cached
@@ -49,8 +51,9 @@
     failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {
         // do something for the failure condition
     }];
+    */
     
-    //[self.posterView setImageWithURL:posterURL];
+    [self.posterView setImageWithURL:posterURL];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -76,6 +79,7 @@
     }
 }
 
+// UIColor from hex color
 -(UIColor *)colorWithHex:(UInt32)col {
     unsigned char r, g, b;
     b = col & 0xFF;

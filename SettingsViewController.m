@@ -15,6 +15,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Dark mode switch initialized to off (since default is light mode)
     [self.darkModeSwitch setOn:NO animated:YES];
 }
 
@@ -41,6 +43,7 @@
     }
 }
 
+// UIColor from hex color
 -(UIColor *)colorWithHex:(UInt32)col {
     unsigned char r, g, b;
     b = col & 0xFF;
@@ -49,10 +52,13 @@
     return [UIColor colorWithRed:(float)r/255.0f green:(float)g/255.0f blue:(float)b/255.0f alpha:1];
 }
 
+// Changes dark mode status
 - (IBAction)onChange:(id)sender {
+    // Checks existing status
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     bool darkModeStatus = [defaults boolForKey:@"dark_mode_on"];
     
+    // Toggles status if switch is toggled
     if (darkModeStatus) {
         darkModeStatus = false;
     }
@@ -62,9 +68,11 @@
     [defaults setBool:darkModeStatus forKey:@"dark_mode_on"];
     [defaults synchronize];
     
+    // Reload the view
     [self viewWillAppear:true];
 }
 
+// Resets bar color to default
 - (IBAction)resetColor:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setInteger:0xf7f7f7 forKey:@"nav_color"];
@@ -73,6 +81,7 @@
     [self viewWillAppear:true];
 }
 
+// Following five functions set different bar colors
 - (IBAction)setColor1:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setInteger:0x273599 forKey:@"nav_color"];
@@ -100,6 +109,14 @@
 - (IBAction)setColor4:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setInteger:0xFFE0E5 forKey:@"nav_color"];
+    [defaults synchronize];
+    
+    [self viewWillAppear:true];
+}
+
+- (IBAction)setColor5:(id)sender {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:0x333333 forKey:@"nav_color"];
     [defaults synchronize];
     
     [self viewWillAppear:true];

@@ -82,6 +82,7 @@
     }
 }
 
+// UIColor from hex color
 -(UIColor *)colorWithHex:(UInt32)col {
     unsigned char r, g, b;
     b = col & 0xFF;

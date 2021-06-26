@@ -323,23 +323,15 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2lY-da-Xve">
-                                <rect key="frame" x="127" y="314" width="40" height="40"/>
+                                <rect key="frame" x="105" y="314" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.83235324163693658" blue="0.38184974311177711" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="setColor2:" destination="1hg-hm-FJp" eventType="touchUpInside" id="4vG-35-vrQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfx-uq-pH2">
-                                <rect key="frame" x="308" y="314" width="40" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.82593967152290604" blue="0.8518157751758183" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="setColor4:" destination="1hg-hm-FJp" eventType="touchUpInside" id="l4g-Fx-Qza"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4c-hU-oBU">
-                                <rect key="frame" x="218" y="314" width="40" height="40"/>
+                                <rect key="frame" x="175" y="314" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.72691407495615434" green="0.90149672786847357" blue="0.54224826410000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
@@ -368,6 +360,22 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gv8-Pi-MgF">
+                                <rect key="frame" x="308" y="314" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="setColor5:" destination="1hg-hm-FJp" eventType="touchUpInside" id="BdN-9v-ZcJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfx-uq-pH2">
+                                <rect key="frame" x="242" y="314" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.82593967152290604" blue="0.8518157751758183" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="setColor4:" destination="1hg-hm-FJp" eventType="touchUpInside" id="l4g-Fx-Qza"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MWk-Km-9Bt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

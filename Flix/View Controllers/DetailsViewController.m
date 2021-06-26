@@ -79,6 +79,7 @@
     }
 }
 
+// UIColor from hex color
 -(UIColor *)colorWithHex:(UInt32)col {
     unsigned char r, g, b;
     b = col & 0xFF;
@@ -95,6 +96,7 @@
     TrailerViewController *trailerViewController = [segue destinationViewController];
     trailerViewController.movie = self.movie;
     
+    // Send movie to full poster view
     FullPosterViewController *fullPosterViewController = [segue destinationViewController];
     fullPosterViewController.movie = self.movie;
 }

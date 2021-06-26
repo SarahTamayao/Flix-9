@@ -47,6 +47,7 @@
     // Setting initial theme to light mode
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:false forKey:@"dark_mode_on"];
+    [defaults setInteger:0xf7f7f7 forKey:@"nav_color"];
     [defaults synchronize];
     
     // Search bar placeholder text
@@ -60,6 +61,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    
     // Loads in user-picked color and dark mode settings
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     bool darkModeStatus = [defaults boolForKey:@"dark_mode_on"];
@@ -151,6 +153,7 @@
     NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
     cell.posterView.image = nil;
     [cell.posterView setImageWithURL:posterURL];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
@@ -205,7 +208,7 @@
     NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
     
     // Get movie corresponding to the cell
-    NSDictionary *movie = self.movies[indexPath.row];
+    NSDictionary *movie = self.filteredData[indexPath.row];
     
     // Send information
     DetailsViewController *detailsViewController = [segue destinationViewController];

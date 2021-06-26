@@ -112,6 +112,7 @@
     });
 }
 
+// UIColor from hex color
 -(UIColor *)colorWithHex:(UInt32)col {
     unsigned char r, g, b;
     b = col & 0xFF;
@@ -121,6 +122,7 @@
 }
 
 -(void)stopAnimation {
+    // Stops loading animation
     dispatch_async(dispatch_get_main_queue(), ^{
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     });
