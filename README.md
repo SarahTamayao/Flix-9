@@ -26,7 +26,6 @@ The following **optional** features are implemented:
 - [X] Customize the selection effect of the cell. **(set it to none to remove the persistent highlighting even after selection)**
 - [X] Customize the navigation bar.
 - [X] Customize the UI.
-- [ ] User can view the app on various device sizes and orientations.
 - [X] Run your app on a real device.
 
 The following **additional** features are implemented:
